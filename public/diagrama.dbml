@@ -1,0 +1,25 @@
+Table user {
+  id int [pk, increment] // Primary key with auto-increment
+  name varchar(100) // User's name
+  email varchar(100) [unique] // User's email, must be unique
+  password varchar(255) // User's password, hashed
+  created_at datetime [default: `CURRENT_TIMESTAMP`] // Timestamp of creation
+}
+
+Table categorias {
+  id int [pk, increment] // Primary key with auto-increment
+  nombre varchar(100) // Category name
+  tipo enum('ingreso', 'gasto') // Type of category: income or expense
+  created_at datetime [default: `CURRENT_TIMESTAMP`] // Timestamp of creation
+}
+
+Table movimientos {
+  id int [pk, increment] // Primary key with auto-increment
+  user_id int [ref: > user.id] // Foreign key referencing user
+  categoria_id int [ref: > categorias.id] // Foreign key referencing category
+  tipo enum('ingreso', 'gasto') // Type of category: income or expense
+  monto decimal(10, 2) // Amount of the movement
+  descripcion varchar(255) // Description of the movement
+  foto varchar(255) // Path to the photo of the movement
+  fecha datetime [default: `CURRENT_TIMESTAMP`] // Date and time of the movement
+}
