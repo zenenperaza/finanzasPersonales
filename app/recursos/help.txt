@@ -1,0 +1,24 @@
+comandos cursos fialment
+  Id CommandLine
+  -- -----------
+php artisan make:model Categoria -m
+php artisan make:model Movimiento -m
+php artisan make:model Presupuesto -m
+
+php artisan migrate
+
+php artisan make:filament-resource Categoria --generate
+
+php artisan cache:clear
+php artisan view:clear
+php artisan route:clear
+php artisan config:clear
+
+php artisan serve
+
+traduccion español
+composer require laravel-lang/common --dev
+php artisan lang:add es
+php artisan lang:update
+
+php artisan make:filament-user
